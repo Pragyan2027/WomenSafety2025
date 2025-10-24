@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeSteps - Women’s Safety</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+        <img src="Isha.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+        <span class="text-danger">SafeSteps</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="Laws.html">Laws</a></li>
+          <li class="nav-item"><a class="nav-link" href="self.html">Self Defence</a></li>
+          <li class="nav-item"><a class="nav-link" href="Helpline.html">Helpline</a></li>
+          <li class="nav-item"><a class="nav-link" href="Volunteer.html">Volunteer</a></li>
+        </ul>
+        <button class="btn btn-danger rounded-pill px-4" onclick="window.location.href='Login.html'">Login</button>
+      </div>
+    </div>
+  </nav>
+
+ <!-- Hero Section Slider -->
+<section id="hero" class="hero-slider">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active" style="background-image: url('slide1.webp');">
+        <div class="overlay"></div>
+        <div class="container text-center hero-content">
+          <h1 class="mb-3">Your Safety, Our Priority.</h1>
+          <p class="lead">SafeSteps empowers women with quick access to emergency help — anytime, anywhere.</p>
+          <a href="#quick-actions" class="btn btn-lg btn-danger mt-3">Access Emergency Tools</a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item" style="background-image: url('slide2.jpg');">
+        <div class="overlay"></div>
+        <div class="container text-center hero-content">
+          <h1 class="mb-3">Help is Just a Tap Away</h1>
+          <p class="lead">Real-time SOS alerts and location sharing for your peace of mind.</p>
+          <a href="Features.html" class="btn btn-lg btn-primary mt-3">Explore Features</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item" style="background-image: url('slide3.jpg');">
+        <div class="overlay"></div>
+        <div class="container text-center hero-content">
+          <h1 class="mb-3">Stay Safe. Stay Strong.</h1>
+          <p class="lead">Empowering women with smart safety tools and awareness.</p>
+          <a href="Volunteer.html" class="btn btn-lg btn-light mt-3">Join as Volunteer</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+
+<!-- Emergency Buttons -->
+<section id="quick-actions" class="py-5">
+  <div class="container text-center">
+    <h2 class="section-title mb-4 fw-bold">🚨 Emergency Actions</h2>
+    <p class="section-subtitle mb-5">Help is just a tap away.</p>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-3 col-6" data-aos="zoom-in">
+        <a href="sos.html" class="action-card enhanced-card floating-card">
+          <i class='bx bxs-alarm-exclamation icon text-danger'></i>
+          <h5>SOS</h5>
+        </a>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in">
+        <a href="danger.html" class="action-card enhanced-card floating-card">
+          <i class='bx bxs-error icon text-warning'></i>
+          <h5>Danger</h5>
+        </a>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in">
+        <a href="panic.html" class="action-card enhanced-card floating-card">
+          <i class='bx bx-bell icon text-primary'></i>
+          <h5>Panic</h5>
+        </a>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in">
+        <a href="scream.html" class="action-card enhanced-card floating-card">
+          <i class='bx bxs-volume-full icon text-pink'></i>
+          <h5>Scream</h5>
+        </a>
+      </div>
+    </div>
+
+    <div class="row g-4 justify-content-center mt-3">
+      <div class="col-md-4 col-6" data-aos="zoom-in">
+        <a href="safe.html" class="action-card enhanced-card floating-card">
+          <i class='bx bxs-shield icon text-success'></i>
+          <h5>Safe</h5>
+        </a>
+      </div>
+      <div class="col-md-4 col-6" data-aos="zoom-in">
+        <a href="recognise.html" class="action-card enhanced-card floating-card">
+          <i class='bx bx-show icon text-secondary'></i>
+          <h5>Recognise</h5>
+        </a>
+      </div>
+      <div class="col-md-4 col-6" data-aos="zoom-in">
+        <a href="neighbour.html" class="action-card enhanced-card floating-card">
+          <i class='bx bxs-home-heart icon text-info'></i>
+          <h5>Neighbour</h5>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- About -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6" data-aos="fade-right">
+          <h2 class="section-title"><span class="brand-font">Isha ~ SafeSteps for Every Woman</span></h2>
+          <p>In today's world, personal safety is a top concern.From SOS alerts to safe zones and awareness initiatives, Isha stands as a shield of strength, ensuring every woman feels safe, seen, and supported — anytime, anywhere. This is more than just an app — it's a lifeline that gives you confidence and security wherever you go.</p>
+          <a href="AboutIsha.html" class="btn btn-danger mt-3 rounded-pill px-4">Learn More</a>
+        </div>
+        <div class="col-md-6 text-center" data-aos="fade-left">
+          <img src="ani.gif" alt="animation" class="img-fluid rounded-4 shadow-lg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animation/Illustration Section -->
+  <section id="gallery" class="py-5">
+    <div class="container text-center">
+      <h2 class="section-title mb-4">Secure • Empower • Protect</h2>
+      <div class="d-flex justify-content-center flex-wrap gap-4" data-aos="zoom-in">
+        <img src="Empower.gif" alt="animation" class="gallery-img">
+        <img src="mobile.gif" alt="mobile" class="gallery-img">
+        <img src="travel.gif" alt="security" class="gallery-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <div class="mb-2">
+        <a href="#" class="text-white me-3"><i class='bx bxl-facebook'></i></a>
+        <a href="#" class="text-white me-3"><i class='bx bxl-instagram'></i></a>
+        <a href="#" class="text-white"><i class='bx bxl-twitter'></i></a>
+      </div>
+      <p class="mb-0">&copy; 2025 <span class="text-danger fw-semibold">SafeSteps</span>. All Rights Reserved.</p>
+      <small>Your safety is our priority.</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+
+  </script>
+</body>
+</html>

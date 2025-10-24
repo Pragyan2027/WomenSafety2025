@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Features | SafeSteps</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style1.css">
+
+  <style>
+    /* 🌗 Dark/Light background + smooth transitions */
+    body {
+      background: linear-gradient(135deg, #1b1b1b, #2a2a2a);
+      color: #fff;
+      transition: background 0.6s ease, color 0.6s ease;
+    }
+
+    body.light-mode {
+      background: linear-gradient(135deg, #f9f9f9, #efefef);
+      color: #222;
+    }
+
+    /* 🔹 Navbar Styling */
+    .navbar {
+      background: rgba(20, 20, 20, 0.95) !important;
+      backdrop-filter: blur(10px);
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.light-mode .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar .nav-link,
+    .navbar-brand span {
+      color: #fff !important;
+      font-weight: 500;
+      transition: color 0.4s ease;
+    }
+
+    body.light-mode .navbar .nav-link,
+    body.light-mode .navbar-brand span {
+      color: #222 !important;
+    }
+
+    .navbar .nav-link:hover {
+      color: #ff4d4d !important;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 2px solid #ff4d4d;
+      border-radius: 50%;
+      color: #ff4d4d;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: #ff4d4d;
+      color: #fff;
+    }
+
+    /* 🌸 Enhanced Cards */
+    .enhanced-card {
+      color: inherit;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.4s ease;
+    }
+
+    body.light-mode .enhanced-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      color: #222;
+    }
+
+    .enhanced-card p {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+
+    /* 🦶 Adaptive Footer */
+    footer {
+      background: #111;
+      color: #fff;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.light-mode footer {
+      background: #f2f2f2;
+      color: #000;
+    }
+
+    footer a {
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ff4d4d;
+    }
+
+    .section-title {
+      color: #ff4d4d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+        <img src="Isha.png" alt="Logo" style="height:40px; margin-right:10px;">
+        <span>SafeSteps</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="Laws.html">Laws</a></li>
+          <li class="nav-item"><a class="nav-link" href="self.html">Self Defence</a></li>
+          <li class="nav-item"><a class="nav-link" href="Helpline.html">Helpline</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button class="theme-toggle" id="themeBtn"><i class='bx bx-moon'></i></button>
+          <button class="btn btn-danger rounded-pill px-4" onclick="window.location.href='Login.html'">Login</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Features Section -->
+  <section id="features" class="py-5 mt-5">
+    <div class="container text-center">
+      <h2 class="section-title fw-bold mb-3" data-aos="fade-down">⚙️ Explore Our Features</h2>
+      <p class="section-subtitle mb-5" data-aos="fade-up">
+        All safety tools at your fingertips — designed for instant response and protection.
+      </p>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="home.html" class="enhanced-card floating-card">
+            <i class='bx bxs-home-heart icon text-danger'></i>
+            <h5>Home</h5>
+            <p>Your personal dashboard to access safety features quickly and easily.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="Neighbourhoodscores.html" class="enhanced-card floating-card">
+            <i class='bx bxs-map icon text-info'></i>
+            <h5>Neighbourhood Scores</h5>
+            <p>Check your area’s safety rating and nearby safe zones before heading out.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="Laws.html" class="enhanced-card floating-card">
+            <i class='bx bxs-book-content icon text-warning'></i>
+            <h5>Laws</h5>
+            <p>Know your rights and understand essential women safety laws and acts.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="self.html" class="enhanced-card floating-card">
+            <i class='bx bxs-shield icon text-success'></i>
+            <h5>Self Defence</h5>
+            <p>Learn self-defence moves and techniques to protect yourself in risky situations.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="Helpline.html" class="enhanced-card floating-card">
+            <i class='bx bxs-phone-call icon text-primary'></i>
+            <h5>Helpline Number</h5>
+            <p>Quick access to verified helplines for emergencies, counselling, and legal aid.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="livelocation.html" class="enhanced-card floating-card">
+            <i class='bx bx-current-location icon text-danger'></i>
+            <h5>Live Location</h5>
+            <p>Share your real-time location with trusted contacts during travel or emergencies.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="showlivealert.html" class="enhanced-card floating-card">
+            <i class='bx bxs-bell-ring icon text-warning'></i>
+            <h5>Show Live Alert</h5>
+            <p>Instantly alert nearby users or authorities with your live location and status.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="danger.html" class="enhanced-card floating-card">
+            <i class='bx bxs-error icon text-danger'></i>
+            <h5>Danger</h5>
+            <p>Detects unsafe situations and allows you to trigger emergency protocols instantly.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="panic.html" class="enhanced-card floating-card">
+            <i class='bx bx-bell icon text-pink'></i>
+            <h5>Panic</h5>
+            <p>Send a one-touch SOS alert to pre-saved emergency contacts with location info.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="recogniseface.html" class="enhanced-card floating-card">
+            <i class='bx bx-face icon text-secondary'></i>
+            <h5>Recognise Face</h5>
+            <p>AI-powered feature to identify potential threats or verify known individuals.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="scream.html" class="enhanced-card floating-card">
+            <i class='bx bxs-volume-full icon text-danger'></i>
+            <h5>Scream</h5>
+            <p>Activate loud sound alarms or audio cues to attract nearby attention quickly.</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-6" data-aos="zoom-in">
+          <a href="safe.html" class="enhanced-card floating-card">
+            <i class='bx bxs-lock-alt icon text-success'></i>
+            <h5>Safe</h5>
+            <p>Confirm and notify your trusted circle when you’ve reached a safe destination.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-4">
+    <div class="container">
+      <div class="mb-2">
+        <a href="#" class="me-3"><i class='bx bxl-facebook'></i></a>
+        <a href="#" class="me-3"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+      </div>
+      <p class="mb-0">&copy; 2025 <span class="text-danger fw-semibold">SafeSteps</span>. All Rights Reserved.</p>
+      <small>Your safety is our priority.</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const themeBtn = document.getElementById("themeBtn");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      const icon = themeBtn.querySelector("i");
+      icon.classList.toggle("bx-moon");
+      icon.classList.toggle("bx-sun");
+    });
+  </script>
+
+</body>
+</html>

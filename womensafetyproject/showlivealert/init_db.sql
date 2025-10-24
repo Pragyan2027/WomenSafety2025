@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS alerts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  latitude REAL NOT NULL,
+  longitude REAL NOT NULL,
+  address TEXT,
+  ts INTEGER NOT NULL
+);

@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WomenSafe — Live Alert</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&family=Montserrat:ital,wght@0,400;0,800;1,800&display=swap" rel="stylesheet">
+
+  <!-- === Provided CSS (kept mostly unchanged, small additions for slider controls & map) === -->
+  <style>
+    /* ========================= 
+       🌐 Global Styles
+    ========================= */
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #fff;
+      margin: 0;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #d62828;
+    }
+
+    /* =========================
+    Hero Slider Section (Enhanced but Scoped)
+    ========================= */
+    .hero-slider {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-slider .carousel-item {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.6s ease-in-out, opacity 0.4s ease-in-out;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+    .hero-slider .carousel-item.active {
+      transform: scale(1.05);
+      opacity: 1;
+      position: relative;
+    }
+
+    .hero-slider .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: fadeInUp 1s ease-out;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+      margin: 0;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-top: 15px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.95;
+    }
+
+    .hero-content .btn {
+      font-size: 1.1rem;
+      padding: 14px 36px;
+      border-radius: 50px;
+      background-color: #ff4d4d;
+      color: #fff;
+      border: none;
+      margin-top: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    .hero-content .btn:hover {
+      background-color: #d62828;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Carousel Controls */
+    .slider-controls {
+      position: absolute;
+      z-index: 3;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+    }
+
+    .slider-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.5);
+      border: none;
+      cursor: pointer;
+    }
+    .slider-dot.active {
+      background-color: #ff4d4d;
+    }
+
+    /* ✨ Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+
+      .hero-content .btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+    }
+
+    /* =========================
+       🖼️ Gallery
+    ========================= */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      color: #555;
+    }
+
+    .gallery-img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* =========================
+       🦶 Footer
+    ========================= */
+    footer i {
+      font-size: 1.6rem;
+      transition: color 0.3s ease;
+    }
+
+    footer i:hover {
+      color: #ff4d4d;
+    }
+    /* 🔸 Modern Transparent Header */
+    .navbar {
+      background: rgba(255, 255, 255, 0.15) !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+      padding: 16px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .navbar-brand span {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: none;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      text-decoration:none;
+    }
+
+    .nav-link:hover {
+      color: #ff4d4d !important;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    /* =========================
+       🌟 Emergency Action Cards
+    ========================= */
+
+    .enhanced-card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 35px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .enhanced-card::before {
+      content: "";
+      position: absolute;
+      width: 180%;
+      height: 180%;
+      background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+      top: -50%;
+      left: -50%;
+      transform: scale(0);
+      transition: transform 0.4s ease;
+      z-index: 0;
+    }
+
+    .enhanced-card:hover::before {
+      transform: scale(1);
+    }
+
+    .enhanced-card .icon {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+
+    .enhanced-card h5 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0;
+      color: #222;
+      z-index: 1;
+    }
+
+    /* Floating + lift effect */
+    .floating-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .floating-card:hover .icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    /* SOS glow pulse effect */
+    .enhanced-card:first-child::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.25) 0%, transparent 70%);
+      animation: pulse 2s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.6; }
+      50% { transform: scale(1.05); opacity: 0.2; }
+      100% { transform: scale(0.95); opacity: 0.6; }
+    }
+
+    /* Adjust for smaller screens */
+    @media (max-width: 768px) {
+      .enhanced-card {
+        padding: 25px 15px;
+      }
+      .enhanced-card .icon {
+        font-size: 2.2rem;
+      }
+      .enhanced-card h5 {
+        font-size: 1rem;
+      }
+    }
+
+    /* --- Enhanced About Section --- */
+
+    /* 1. Create the main card container */
+    #about .row {
+      background-color: #ffffff;
+      border-radius: 20px; /* Softer, modern corners */
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); /* A subtle, modern shadow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+      margin-left: 0;  /* Override default Bootstrap row margins */
+      margin-right: 0; /* Override default Bootstrap row margins */
+    }
+
+    /* 2. Add an interactive hover effect to the card */
+    #about .row:hover {
+      transform: translateY(-8px); /* Lifts the card slightly on hover */
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 3. Improve the typography of the heading */
+    #about .section-title {
+      font-size: 2.2rem; /* Make the title more prominent */
+      font-weight: 700; /* Bolder text for impact */
+      color: #212529;   /* A strong, dark color */
+      margin-bottom: 1rem;
+    }
+
+    /* 4. Make the paragraph text more readable */
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.8;  /* Increased line spacing for readability */
+      color: #555;      /* Softer than pure black */
+    }
+
+    /* 5. Enhance the button's hover effect */
+    #about .btn:hover {
+      transform: scale(1.05); /* Adds a slight zoom effect */
+    }
+    .brand-font {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; /* UPDATED - This is the heaviest available weight */
+      letter-spacing: 1.5px;
+      font-style: italic;
+    }
+
+    /* Additional styles for the Live Alert area and map */
+    .controls {
+      margin-top: 22px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .alert-status {
+      color: #fff;
+      font-weight:700;
+      padding:8px 14px;
+      border-radius:20px;
+      background: rgba(0,0,0,0.35);
+      display:inline-block;
+    }
+
+    #map {
+      width: 90%;
+      max-width: 1000px;
+      height: 360px;
+      margin: 28px auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+
+    .live-btn {
+      background: linear-gradient(90deg,#ff6b6b,#ff4d4d);
+      border: none;
+      color: white;
+      padding: 14px 26px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      box-shadow: 0 8px 25px rgba(255,77,77,0.18);
+    }
+
+    /* small admin link */
+    .admin-link {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      color: #fff;
+      background: rgba(0,0,0,0.3);
+      padding: 8px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* helper for small messages */
+    .muted {
+      opacity: 0.9;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-brand brand-font" style="color:#fff;">
+      <span>WomenSafe</span>
+    </div>
+    <div>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#how">How it works</a>
+    </div>
+    <a href="/admin" class="admin-link">Admin</a>
+  </nav>
+
+  <!-- Hero slider -->
+  <header class="hero-slider" id="home">
+    <div class="carousel-item active" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRji4cX_I6jb8GGdkXlv8B8ye2pa5ZjEgOJLl7ecmrIBFBK9JN7FsaCFc03nWYL0IOlWIg&usqp=CAU');">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Safety. Solidarity. Justice.</h1>
+        <p>Support, act, and respond — instantly. Press the Live Alert button to share your location with trusted responders.</p>
+        <div class="controls">
+          <button class="hero-content btn live-btn" id="liveAlertBtn">Show Live Alert</button>
+          <div class="alert-status" id="alertStatus">No active alert</div>
+        </div>
+        <p class="muted">Images show the struggle for equality, resilience, and empowerment.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1501601961806-3c0e8b29d8d9?q=80&w=1600&auto=format&fit=crop');">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Empowerment through connection</h1>
+        <p>When every second matters — share your live location to get help quickly.</p>
+        <div class="controls">
+          <button class="hero-content btn live-btn" id="liveAlertBtn2">Show Live Alert</button>
+          <div class="alert-status" id="alertStatus2" style="display:none">No active alert</div>
+        </div>
+        <p class="muted">We advocate equality, safety, and justice for all genders and ages.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRji4cX_I6jb8GGdkXlv8B8ye2pa5ZjEgOJLl7ecmrIBFBK9JN7FsaCFc03nWYL0IOlWIg&usqp=CAU');">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Stand together</h1>
+        <p>Use the Live Alert button to share your current position — saved locally so emergency contacts or guardians can access it.</p>
+        <div class="controls">
+          <button class="hero-content btn live-btn" id="liveAlertBtn3">Show Live Alert</button>
+          <div class="alert-status" id="alertStatus3" style="display:none">No active alert</div>
+        </div>
+        <p class="muted">This tool is for awareness and rapid response.</p>
+      </div>
+    </div>
+
+    <div class="slider-controls" id="dots"></div>
+  </header>
+
+  <!-- Map & info -->
+  <main style="padding:40px 10px;text-align:center;">
+    <h2 id="how" class="section-title">Live Location Map</h2>
+    <div id="map">Map loading...</div>
+    <p class="muted">Your location will be recorded in the local database (for demo purposes this runs on your machine).</p>
+  </main>
+
+  <!-- About -->
+  <section id="about" style="padding:40px 16px;background:#f8f9fb;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div class="row">
+        <h3 class="section-title">Why this matters</h3>
+        <p>Women across the world face discrimination and threats to their safety. Rapid location sharing helps authorities, guardians, and responders reach those in need faster. This demo shows a locally-saved alert flow — in production you would integrate verified responder networks and secure hosting.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:28px;text-align:center;">
+    <p style="margin:0;">© <strong>WomenSafe</strong> — Empowerment • Justice • Equality</p>
+  </footer>
+
+  <!-- ======= JS ======= -->
+  <script>
+    // Simple slider functionality
+    (function initSlider(){
+      const items = Array.from(document.querySelectorAll('.carousel-item'));
+      const dotsContainer = document.getElementById('dots');
+      let idx = 0;
+
+      function show(i){
+        items.forEach((it, k) => {
+          it.classList.toggle('active', k === i);
+        });
+        Array.from(dotsContainer.children).forEach((d,k)=>d.classList.toggle('active', k === i));
+      }
+
+      // build dots
+      items.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        btn.addEventListener('click', () => { idx = i; show(idx); });
+        dotsContainer.appendChild(btn);
+      });
+
+      // auto rotate
+      setInterval(() => {
+        idx = (idx + 1) % items.length;
+        show(idx);
+      }, 7000);
+    })();
+  </script>
+
+  <!-- Google Maps JS API -->
+  <!-- Replace YOUR_GOOGLE_MAPS_API_KEY with your real key -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArX26ERLC49gw1kbwPpZGcuoU_Kn42lnY&callback=initMap"></script>
+  
+  <script>
+    // Map + geocode + live alert handler
+    let map, marker, geocoder;
+
+    function initMap() {
+      geocoder = new google.maps.Geocoder();
+      const initial = { lat: 20.5937, lng: 78.9629 }; // India center fallback
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: initial,
+        zoom: 5,
+        disableDefaultUI: false
+      });
+      marker = new google.maps.Marker({
+        map,
+        position: initial
+      });
+    }
+
+    // Wait until Maps lib is loaded
+    function whenMapsReady() {
+      if (window.google && google.maps) {
+        initMap();
+      } else {
+        setTimeout(whenMapsReady, 200);
+      }
+    }
+    whenMapsReady();
+
+    async function sendAlertToServer(lat, lng, address) {
+      try {
+        const res = await fetch('/alerts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ latitude: lat, longitude: lng, address })
+        });
+        const j = await res.json();
+        return j;
+      } catch (err) {
+        console.error('Failed to send alert', err);
+        return { ok:false, error: err.message };
+      }
+    }
+
+    function showStatus(text, el = document.getElementById('alertStatus')) {
+      el.textContent = text;
+      if (!el.style.display || el.style.display === 'none') el.style.display = 'inline-block';
+    }
+
+    async function handleLiveAlert(statusEl = document.getElementById('alertStatus')) {
+      if (!navigator.geolocation) {
+        showStatus('Geolocation not supported', statusEl);
+        return;
+      }
+      showStatus('Finding your location...', statusEl);
+
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        // update map
+        if (marker && map) {
+          marker.setPosition({ lat, lng });
+          map.setCenter({ lat, lng });
+          map.setZoom(16);
+        }
+
+        // reverse geocode
+        let address = 'Unknown location';
+        try {
+          const results = await new Promise((resolve, reject) => {
+            geocoder.geocode({ location: { lat, lng } }, (res, status) => {
+              if (status === 'OK' && res && res[0]) resolve(res[0].formatted_address);
+              else resolve(null);
+            });
+          });
+          if (results) address = results;
+        } catch (e) {
+          console.warn('Geocode failed', e);
+        }
+
+        // show immediate status
+        showStatus('Sending alert — ' + address, statusEl);
+
+        // send to local backend
+        const resp = await sendAlertToServer(lat, lng, address);
+        if (resp && resp.ok) {
+          showStatus('Alert recorded at ' + new Date(resp.ts).toLocaleString(), statusEl);
+        } else {
+          showStatus('Alert failed: ' + (resp && resp.error ? resp.error : 'server error'), statusEl);
+        }
+      }, (err) => {
+        console.error(err);
+        showStatus('Could not get location: ' + err.message, statusEl);
+      }, { enableHighAccuracy: true, timeout: 10000 });
+    }
+
+    // wire up all alert buttons
+    document.addEventListener('click', function(e){
+      if (e.target && (e.target.id === 'liveAlertBtn' || e.target.id === 'liveAlertBtn2' || e.target.id === 'liveAlertBtn3')) {
+        // choose status element nearest to that button
+        const btn = e.target;
+        const statusEl = btn.parentElement.querySelector('.alert-status') || document.getElementById('alertStatus');
+        handleLiveAlert(statusEl);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+/* =========================
+   🌐 Global Styles
+========================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #fff;
+}
+
+.nav-link {
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #d62828;
+}
+
+/* =========================
+   🦸 Hero Slider Section (Enhanced but Scoped)
+========================= */
+.hero-slider {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-slider .carousel-item {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 1.2s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.hero-slider .carousel-item.active {
+  transform: scale(1.05);
+}
+
+.hero-slider .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.hero-content .btn {
+  font-size: 1.1rem;
+  padding: 14px 36px;
+  border-radius: 50px;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  margin-top: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content .btn:hover {
+  background-color: #d62828;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+  transform: scale(1.4);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 0.8;
+  transform: scale(1.5);
+}
+
+/* Indicators */
+.carousel-indicators {
+  bottom: 30px;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: #ff4d4d;
+}
+
+/* ✨ Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .hero-content .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   🖼️ Gallery
+========================= */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: #555;
+}
+
+.gallery-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   🦶 Footer
+========================= */
+footer i {
+  font-size: 1.6rem;
+  transition: color 0.3s ease;
+}
+
+footer i:hover {
+  color: #ff4d4d;
+}
+/* 🔸 Modern Transparent Header */
+.navbar {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.navbar-brand span {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: none;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ff4d4d !important;
+}
+
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* When scrolled down, switch to dark text for readability */
+.navbar.scrolled .nav-link {
+  color: #222 !important;
+}
+
+.navbar.scrolled .navbar-brand span {
+  color: #d62828;
+}
+/* =========================
+   🌟 Emergency Action Cards
+========================= */
+
+.enhanced-card {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 35px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.enhanced-card::before {
+  content: "";
+  position: absolute;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+  top: -50%;
+  left: -50%;
+  transform: scale(0);
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.enhanced-card:hover::before {
+  transform: scale(1);
+}
+
+.enhanced-card .icon {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.enhanced-card h5 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+  z-index: 1;
+}
+
+/* Floating + lift effect */
+.floating-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.floating-card:hover .icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* SOS glow pulse effect */
+.enhanced-card:first-child::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.25) 0%, transparent 70%);
+  animation: pulse 2s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.2; }
+  100% { transform: scale(0.95); opacity: 0.6; }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .enhanced-card {
+    padding: 25px 15px;
+  }
+  .enhanced-card .icon {
+    font-size: 2.2rem;
+  }
+  .enhanced-card h5 {
+    font-size: 1rem;
+  }
+}
+
+/* --- Enhanced About Section --- */
+
+/* 1. Create the main card container */
+#about .row {
+  background-color: #ffffff;
+  border-radius: 20px; /* Softer, modern corners */
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); /* A subtle, modern shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  margin-left: 0;  /* Override default Bootstrap row margins */
+  margin-right: 0; /* Override default Bootstrap row margins */
+}
+
+/* 2. Add an interactive hover effect to the card */
+#about .row:hover {
+  transform: translateY(-8px); /* Lifts the card slightly on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Improve the typography of the heading */
+#about .section-title {
+  font-size: 2.2rem; /* Make the title more prominent */
+  font-weight: 700; /* Bolder text for impact */
+  color: #212529;   /* A strong, dark color */
+  margin-bottom: 1rem;
+}
+
+/* 4. Make the paragraph text more readable */
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.8;  /* Increased line spacing for readability */
+  color: #555;      /* Softer than pure black */
+}
+
+/* 5. Enhance the button's hover effect */
+#about .btn:hover {
+  transform: scale(1.05); /* Adds a slight zoom effect */
+}
+.brand-font {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; /* UPDATED - This is the heaviest available weight */
+  letter-spacing: 1.5px;
+  font-style: italic;
+}
