@@ -1,69 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women Helpline Form</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Women Helpline Form</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #d62828;
+      --accent: #f77f00;
+      --bg: #f8f9fa;
+      --text: #222;
+      --white: #ffffff;
+    }
+
+body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      /* This is the previous pinkish gradient background */
+      background: linear-gradient(to right, #ffe0e0, #f7f3f3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 10px;
+    }
+
+    .form-container {
+      background: var(--white);
+      padding: 30px 35px; /* Added more horizontal padding */
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.7s ease-in-out;
+      /* Added hover effect for a "lift" */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .form-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-container h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* This is the new quote box */
+    .quote-box {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 25px; /* More space */
+      min-height: 40px; /* Prevents layout jump */
+      transition: opacity 0.5s ease-in-out;
+      font-style: italic;
+    }
+
+    .form-group {
+      margin-bottom: 20px; /* More space */
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px; /* More space */
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 14px; /* Slightly larger */
+      border: 1px solid #eee; /* Softer border */
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #fafafa;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      /* Added a default softer shadow */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 8px rgba(214, 40, 40, 0.3); /* Softer focus shadow */
+      background-color: #fff;
+    }
+
+    .helpline-number {
+      margin-top: 22px;
+      padding: 18px;
+      background-color: #ffeaea;
+      border-radius: 8px;
+      color: var(--primary);
+      text-align: center;
+      font-weight: 600; /* Bolder */
+      font-size: 16px;
+      border: 1px solid var(--primary);
+      transition: 0.3s;
+    }
+
+    .helpline-number a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700; /* Even bolder */
+    }
+
+    .helpline-number a:hover {
+      text-decoration: underline;
+    }
+
+    /* Floating Emergency Button (now an <a> tag) */
+    .floating-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px 20px; /* Adjusted padding */
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Space between icon and text */
+      text-decoration: none; /* Remove underline from link */
+      z-index: 1000;
+    }
+
+    .floating-btn:hover {
+      background-color: #b51f1f;
+      animation-play-state: paused; /* Pause animation on hover */
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(214,40,40, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(214,40,40, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(214,40,40, 0); }
+    }
+
+    /* Style for the Font Awesome icon */
+    .floating-btn .fas {
+      font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 20px;
+      }
+      .floating-btn {
+        padding: 14px 18px;
+        font-size: 14px;
+      }
+      /* Hides text on small screens, shows only icon */
+      .floating-btn span {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="form-container">
-    <h2>Women Helpline</h2>
-    <div class="form-group">
-        <label for="state">Select State:</label>
-        <select id="state" name="state" onchange="updateDistricts()">
-            <option value="" disabled selected>Select your state</option>
-            <option value="Andra Pradesh">Andra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            <option value="Assam">Assam</option>
-            <option value="Bihar">Bihar</option>
-            <option value="Chhattisgarh">Chhattisgarh</option>
-            <option value="Goa">Goa</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madya Pradesh">Madya Pradesh</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Meghalaya">Meghalaya</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Nagaland">Nagaland</option>
-            <option value="Orissa">Orissa</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Sikkim">Sikkim</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Telangana">Telangana</option>
-            <option value="Tripura">Tripura</option>
-            <option value="Uttaranchal">Uttaranchal</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="West Bengal">West Bengal</option>
-            <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
-            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-            <option value="Daman and Diu">Daman and Diu</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Lakshadeep">Lakshadeep</option>
-            <option value="Pondicherry">Pondicherry</option>
-        </select>
+  <div class="form-container">
+    <h2>WOMEN HELPLINE</h2>
+    
+    <div id="quote-box" class="quote-box">
+      "You are braver than you believe."
     </div>
 
     <div class="form-group">
-        <label for="district">Select District:</label>
-        <select id="district" name="district" onchange="updateHelpline()">
-            <option value="" disabled selected>Select your district</option>
-        </select>
+      <label for="state">Select State / Union Territory:</label>
+      <select id="state" name="state" onchange="updateDistricts()">
+        <option value="" disabled selected>Select your state</option>
+        <option value="AndraPradesh">Andhra Pradesh</option>
+        <option value="ArunachalPradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="HimachalPradesh">Himachal Pradesh</option>
+        <option value="JammuKashmir">Jammu & Kashmir</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="MadhyaPradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="TamilNadu">Tamil Nadu</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="UttarPradesh">Uttar Pradesh</option>
+        <option value="WestBengal">West Bengal</option>
+        <option disabled style="background-color:#aaa; color:#fff">UNION TERRITORIES</option>
+        <option value="AndamanNicobar">Andaman & Nicobar Islands</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="DadraNagarHaveliDamanDiu">Dadra & Nagar Haveli and Daman & Diu</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Puducherry">Puducherry</option>
+      </select>
     </div>
 
-    <div id="helpline" class="helpline-number">Helpline Number: <a href="#">Select a state and district</a></div>
-</div>
+    <div class="form-group">
+      <label for="district">Select District:</label>
+      <select id="district" name="district" onchange="updateHelpline()">
+        <option value="" disabled selected>Select your district</option>
+      </select>
+    </div>
 
-<script src="script.js"></script>
+    <div id="helpline" class="helpline-number" aria-live="polite">
+      Select a state and district
+    </div>
+  </div>
+
+  <a href="tel:112" class="floating-btn">
+    <i class="fas fa-phone-alt"></i> <span>Emergency: 112</span> </a>
+
+
+  <script>
+    // --- Data Objects (No Changes) ---
+const districtData = {
+    'AndraPradesh': ['Anantapur', "Chittoor", "East Godavari", "Guntur", "Kadapa", "Krishna", "Kurnool", "Prakasam", "Nellore", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari"],
+    'ArunachalPradesh': ['Anjaw', 'Changlang', 'Dibang Valley', 'East Kameng', "East Siang", "Kra Daadi", "Kurung Kumey", "Lohit", "Longding", "Lower Dibang Valley", "Lower Subansiri", "Namsai", "Papum Pare", "Siang", "Tawang", "Tirap", "Upper Siang", "Upper Subansiri", "West Kameng", "West Siang", "Itanagar"],
+    'Assam': ["Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Hojai", "Jorhat", "Kamrup Metropolitan", "Kamrup (Rural)", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Dima Hasao", "Sivasagar", "Sonitpur", "South Salmara Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"],
+    'Bihar': ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"],
+    'Chhattisgarh': ["Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bemetara", "Bijapur", "Bilaspur", "Dantewada", "Dhamtari", "Durg", "Gariaband", "Janjgir Champa", "Jashpur", "Kabirdham", "Kanker", "Kondagaon", "Korba", "Koriya", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sukma", "Surajpur", "Surguja"],
+    'Goa': ["North Goa", "South Goa"],
+    'Gujarat': ["Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", "Bhavnagar", "Botad", "Chhota Udaipur", "Dahod", "Dang", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kheda", "Kutch", "Mahisagar", "Mehsana", "Morbi", "Narmada", "Navsari", "Panchmahal", "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat", "Surendranagar", "Tapi", "Vadodara", "Valsad"],
+    'Haryana': ["Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Mewat", "Palwal", "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"],
+    'HimachalPradesh': ["Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul Spiti", "Mandi", "Shimla", "Sirmaur", "Solan", "Una"],
+    'JammuKashmir': ["Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu", "Kargil", "Kathua", "Kishtwar", "Kulgam", "Kupwara", "Leh", "Poonch", "Pulwama", "Rajouri", "Ramban", "Reasi", "Samba", "Shopian", "Srinagar", "Udhampur"],
+    'Jharkhand': ["Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih", "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahebganj", "Seraikela Kharsawan", "Simdega", "West Singhbhum"],
+    'Karnataka': ["Bagalkot", "Bangalore Rural", "Bangalore Urban", "Belgaum", "Bellary", "Bidar", "Vijayapura", "Chamarajanagar", "Chikkaballapur", "Chikkamagaluru", "Chitradurga", "Dakshina Kannada", "Davanagere", "Dharwad", "Gadag", "Gulbarga", "Hassan", "Haveri", "Kodagu", "Kolar", "Koppal", "Mandya", "Mysore", "Raichur", "Ramanagara", "Shimoga", "Tumkur", "Udupi", "Uttara Kannada", "Yadgir"],
+    'Kerala': ["Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kollam", "Kottayam", "Kozhikode", "Malappur", "Palakkad", "Pathanamthitta", "Thiruvananthapuram", "Thrissur", "Wayanad"],
+    'MadhyaPradesh': ["Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul", "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas", "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur", "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narsinghpur", "Neemuch", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa", "Sagar", "Satna",
+        "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri", "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"
+    ],
+    'Maharashtra': ["Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana", "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna", "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nandurbar", "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri", "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"],
+    'Manipur': ["Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam", "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong", "Tengnoupal", "Thoubal", "Ukhrul"],
+    'Meghalaya': ["East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "North Garo Hills", "Ri Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills", "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"],
+    'Mizoram': ["Aizawl", "Champhai", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Serchhip", "Aizawl", "Champhai", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Serchhip"],
+    'Nagaland': ["Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon", "Peren", "Phek", "Tuensang", "Wokha", "Zunheboto"],
+    'Odisha': ["Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Debagarh", "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghpur", "Jajpur", "Jharsuguda", "Kalahandi", "Kandhamal", "Kendrapara", "Kendujhar", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj", "Nabarangpur", "Nayagarh", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Subarnapur", "Sundergarh"],
+    'Punjab': ["Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Firozpur", "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Mansa", "Moga", "Mohali", "Muktsar", "Pathankot", "Patiala", "Rupnagar", "Sangrur", "Shaheed Bhagat Singh Nagar", "Tarn Taran"],
+    'Rajasthan': ["Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur", "Ganganagar", "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Karauli", "Kota", "Nagaur", "Pali", "Pratapgarh", "Rajsamand", "Sawai Madhopur", "Sikar", "Sirohi", "Tonk", "Udaipur"],
+    'Sikkim': ["East Sikkim", "North Sikkim", "South Sikkim", "West Sikkim"],
+    'TamilNadu': ["Ariyalur", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kanchipuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Salem", "Sivaganga", "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"],
+    'Telangana': ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar", "Jogulamba", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal", "Nagarkurnool", "Nalgonda", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Ranga Reddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
+    'Tripura': ["Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura"],
+    'UttarPradesh': ["Agra", "Aligarh", "Allahabad", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Faizabad", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi", "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj", "Kaushambi", "Kheri", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Raebareli", "Rampur", "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti", "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"],
+    'Uttarakhand': ["Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri", "Pithoragarh", "Rudraprayag", "Tehri", "Udham Singh Nagar", "Uttarkashi"],
+    'WestBengal': ["Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur", "Darjeeling", "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda", "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Bardhaman", "Paschim Medinipur", "Purba Bardhaman", "Purba Medinipur", "Purulia", "South 24 Parganas", "Uttar Dinajpur"],
+    'AndamanNicobar': ["Nicobar", "North Middle Andaman", "South Andaman"],
+    'Chandigarh': ["Chandigarh"],
+    'DadraHaveli': ["Dadra Nagar Haveli"],
+    'DamanDiu': ["Daman", "Diu"],
+    'Delhi': ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"],
+    'Lakshadweep': ['Lakshadweep'],
+    'Puducherry': ['Karaikal', 'Mahe', 'Puducherry', 'Yanam']
+};
+    
+    const HelplineNumbers = {
+    'AndraPradesh': ['181', '1091', '112'],
+    'ArunachalPradesh': ['181', '1091', '112'],
+    'Assam': ['181', '1091', '112'],
+    'Bihar': ['181', '1091', '112'],
+    'Chhattisgarh': ['181', '1091', '112'],
+    'Goa': ['181', '1091', '112', '1090'],
+    'Gujarat': ['181', '1091', '112'],
+    'Haryana': ['181', '1091', '112'],
+    'HimachalPradesh': ['181', '1091', '112'],
+    'JammuKashmir': ['181', '1091', '112'],
+    'Jharkhand': ['181', '1091', '112'],
+    'Karnataka': ['181', '1091', '112'],
+    'Kerala': ['181', '1091', '112'],
+    'MadhyaPradesh': ['181', '1091', '112'],
+    'Maharashtra': ['181', '1091', '112'],
+    'Manipur': ['181', '1091', '112'],
+    'Meghalaya': ['181', '1091', '112'],
+    'Mizoram': ['181', '1091', '112'],
+    'Nagaland': ['181', '1091', '112'],
+    'Odisha': ['181', '1091', '112'],
+    'Punjab': ['181', '1091', '112'],
+    'Rajasthan': ['181', '1091', '112'],
+    'Sikkim': ['181', '1091', '112'],
+    'TamilNadu': ['181', '1091', '112'],
+    'Telangana': ['181', '1091', '112'],
+    'Tripura': ['181', '1091', '112'],
+    'UttarPradesh': ['181', '1091', '112', '1090'],
+    'Uttarakhand': ['181', '1091', '112'],
+    'WestBengal': ['181', '1091', '112'],
+    'AndamanNicobar': ['181', '1091', '112'],
+    'Chandigarh': ['181', '1091', '112'],
+    'DadraNagarHaveliDamanDiu': ['181', '1091', '112'],
+    'Delhi': ['181', '1091', '112'],
+    'Lakshadweep': ['181', '1091', '112'],
+    'Puducherry': ['181', '1091', '112']
+    };
+
+    // --- Dropdown Functions (No Changes) ---
+    function updateDistricts() {
+      const stateSelect = document.getElementById('state');
+      const districtSelect = document.getElementById('district');
+      const selectedState = stateSelect.value;
+      const helplineDiv = document.getElementById('helpline');
+
+      districtSelect.innerHTML = '<option value="" disabled selected>Select your district</option>';
+
+      if (selectedState && districtData[selectedState]) {
+        districtData[selectedState].forEach(district => {
+          const option = document.createElement('option');
+          option.value = district;
+          option.textContent = district;
+          districtSelect.appendChild(option);
+        });
+      }
+      helplineDiv.innerHTML = 'Select a state and district';
+    }
+
+    function updateHelpline() {
+      const stateSelect = document.getElementById('state');
+      const districtSelect = document.getElementById('district');
+      const selectedState = stateSelect.value;
+      const selectedDistrict = districtSelect.value;
+      const helplineDiv = document.getElementById('helpline');
+
+      if (
+        selectedState &&
+        selectedDistrict &&
+        HelplineNumbers[selectedState]
+      ) {
+        const numsArray = HelplineNumbers[selectedState];
+        const linksHtml = numsArray.map(num => `<a href="tel:${num}">${num}</a>`).join(' / ');
+        helplineDiv.innerHTML = `Helpline Numbers: ${linksHtml}`;
+      } else {
+        helplineDiv.innerHTML = 'Not available';
+      }
+    }
+
+    // --- NEW: Quote Rotator Script ---
+    const quotes = [
+      "You are braver than you believe, stronger than you seem.",
+      "The power to protect yourself is in your hands.",
+      "Speak up. Your voice is your power.",
+      "Safety is a right, not a privilege.",
+      "You are not alone. Help is always available."
+    ];
+    const quoteBox = document.getElementById('quote-box');
+    
+    function showNewQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteBox.style.opacity = 0; // Fade out
+      setTimeout(() => {
+        quoteBox.textContent = `"${quotes[randomIndex]}"`;
+        quoteBox.style.opacity = 1; // Fade in
+      }, 500); // Wait for fade out to finish
+    }
+
+    // Show a quote immediately on load
+    document.addEventListener('DOMContentLoaded', () => {
+        showNewQuote();
+        // Change the quote every 7 seconds
+        setInterval(showNewQuote, 7000);
+    });
+  </script>
+
 </body>
 </html>
