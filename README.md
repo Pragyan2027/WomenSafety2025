@@ -22,7 +22,6 @@
 | Category | Technology |
 |-----------|-------------|
 | Frontend  | HTML5, CSS3, JavaScript |
-| Backend (optional) | Node.js / Flask *(depending on setup)* |
 | AI/ML | OpenCV, Face Recognition, Audio Processing |
 | Tools & APIs | MediaDevices API, Web Audio API |
 | Design | CSS Animations, Gradients, Glassmorphism |
