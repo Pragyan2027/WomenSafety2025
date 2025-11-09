@@ -34,14 +34,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="Features.html">Features</a></li>
           <li class="nav-item"><a class="nav-link" href="Laws.html">Laws</a></li>
           <li class="nav-item"><a class="nav-link" href="self.html">Self Defence</a></li>
           <li class="nav-item"><a class="nav-link" href="Helpline.html">Helpline</a></li>
           <li class="nav-item"><a class="nav-link" href="Volunteer.html">Volunteer</a></li>
         </ul>
-        <button class="btn btn-danger rounded-pill px-4" onclick="window.location.href='Login.html'">Login</button>
+        <button id="loginBtn" class="btn btn-danger rounded-pill px-4" onclick="window.location.href='Login.html'">Login</button>
+
       </div>
     </div>
   </nav>
@@ -94,61 +95,67 @@
 
 
 <!-- Emergency Buttons -->
+<!-- Emergency Buttons -->
 <section id="quick-actions" class="py-5">
   <div class="container text-center">
     <h2 class="section-title mb-4 fw-bold">🚨 Emergency Actions</h2>
     <p class="section-subtitle mb-5">Help is just a tap away.</p>
 
     <div class="row g-4 justify-content-center">
-      <div class="col-md-3 col-6" data-aos="zoom-in">
+      <!-- Row 1 -->
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
         <a href="sos.html" class="action-card enhanced-card floating-card">
           <i class='bx bxs-alarm-exclamation icon text-danger'></i>
           <h5>SOS</h5>
         </a>
       </div>
-      <div class="col-md-3 col-6" data-aos="zoom-in">
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
         <a href="danger.html" class="action-card enhanced-card floating-card">
           <i class='bx bxs-error icon text-warning'></i>
           <h5>Danger</h5>
         </a>
       </div>
-      <div class="col-md-3 col-6" data-aos="zoom-in">
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
         <a href="panic.html" class="action-card enhanced-card floating-card">
           <i class='bx bx-bell icon text-primary'></i>
           <h5>Panic</h5>
         </a>
       </div>
-      <div class="col-md-3 col-6" data-aos="zoom-in">
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
         <a href="scream.html" class="action-card enhanced-card floating-card">
           <i class='bx bxs-volume-full icon text-pink'></i>
           <h5>Scream</h5>
         </a>
       </div>
-    </div>
 
-    <div class="row g-4 justify-content-center mt-3">
-      <div class="col-md-4 col-6" data-aos="zoom-in">
+      <!-- Row 2 -->
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
         <a href="safe.html" class="action-card enhanced-card floating-card">
           <i class='bx bxs-shield icon text-success'></i>
           <h5>Safe</h5>
         </a>
       </div>
-      <div class="col-md-4 col-6" data-aos="zoom-in">
-        <a href="recognise.html" class="action-card enhanced-card floating-card">
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
+        <a href="https://facerecognizationisha.netlify.app/" class="action-card enhanced-card floating-card">
           <i class='bx bx-show icon text-secondary'></i>
           <h5>Recognise</h5>
         </a>
       </div>
-      <div class="col-md-4 col-6" data-aos="zoom-in">
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
         <a href="neighbour.html" class="action-card enhanced-card floating-card">
           <i class='bx bxs-home-heart icon text-info'></i>
           <h5>Neighbour</h5>
         </a>
       </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in">
+        <a href="https://live-location-xi.vercel.app/" class="action-card enhanced-card floating-card">
+          <i class='bx bx-broadcast icon text-danger'></i>
+          <h5>Live</h5>
+        </a>
+      </div>
     </div>
   </div>
 </section>
-
 
 
   <!-- About -->
@@ -206,7 +213,44 @@
     }
   });
 
+const params = new URLSearchParams(window.location.search);
+  const userName = params.get("name");
 
+  if (userName) {
+    // Create toast popup
+    const toast = document.createElement("div");
+    toast.innerHTML = `👋 Hi, <strong>${userName}</strong>! Welcome back to <span class="text-danger fw-semibold">SafeSteps</span>.`;
+    toast.style.position = "fixed";
+    toast.style.top = "20px";
+    toast.style.right = "20px";
+    toast.style.background = "#ffffff";
+    toast.style.border = "1px solid #ddd";
+    toast.style.borderRadius = "12px";
+    toast.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+    toast.style.padding = "12px 18px";
+    toast.style.fontSize = "1rem";
+    toast.style.color = "#333";
+    toast.style.zIndex = "9999";
+    toast.style.opacity = "0";
+    toast.style.transition = "opacity 0.5s ease";
+
+    document.body.appendChild(toast);
+
+    // Fade in
+    setTimeout(() => {
+      toast.style.opacity = "1";
+    }, 100);
+
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+      toast.style.opacity = "0";
+      setTimeout(() => toast.remove(), 500);
+    }, 4000);
+
+    // Hide Login button
+    const loginBtn = document.getElementById("loginBtn");
+    if (loginBtn) loginBtn.style.display = "none";
+  }
   </script>
 </body>
 </html>
