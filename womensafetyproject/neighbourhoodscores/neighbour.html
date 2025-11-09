@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neighbourhood Scores</title>
     <link rel="stylesheet" href="neighbour.css">
-    <img src="fy.jpg" alt="img" class="img">
+    <header class="banner">Neighbourhood Safety Portal</header>
+
 </head>
 <body>
 
+
+  <section class="main-section">
+    <div class="gif-side">
+  <video autoplay loop muted playsinline>
+    <source src="char.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
+    
+
     <div class="container">
         <h1>Neighbourhood Scores</h1>
-
+        <h2>Share your thoughts about your neighbouhood with us!</h2>
         <div class="neighbourhood-input">
             <label for="neighbourhood-name">Neighbourhood Name:</label>
             <input type="text" id="neighbourhood-name" placeholder="Enter neighbourhood name">
@@ -55,125 +68,7 @@
             <!-- Neighbourhoods with scores will be added here -->
         </ul>
     </div>
-<style>/* Basic reset for margins and padding */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #FFDFD6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-    }
-    .img {
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-        width: 100px;
 
-
-
-    }
-    .container {
-        background-color:#E3A5C7;
-        width: 100%;
-        max-width: 500px;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        font-family:Georgia, 'Times New Roman', Times, serif;
-    }
-    
-    h1, h2 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
-    
-    label {
-        display: block;
-        font-weight: bold;
-        color: #555;
-        margin-bottom: 8px;
-    }
-    
-    input[type="text"], input[type="number"], textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        transition: all 0.3s ease;
-    }
-    
-    input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
-        border-color: #007BFF;
-        outline: none;
-        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-    }
-    
-    button {
-        width: 100%;
-        padding: 12px;
-        background-color: #694F8E;
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    
-    button:hover {
-        background-color: #0056b3;
-    }
-    
-    #neighbourhood-list, #report-list {
-        list-style-type: none;
-        padding: 0;
-    }
-    
-    #neighbourhood-list li, #report-list li {
-        background-color: #f0f0f0;
-        padding: 15px;
-        margin: 10px 0;
-        border-left: 4px solid #007BFF;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-    
-    #neighbourhood-list li strong {
-        color: #333;
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    
-    /* Map container styling */
-    #map {
-        height: 300px;
-        background-color: #ddd;
-        border-radius: 10px;
-        margin-bottom: 20px;
-    }
-    
-    /* Responsive design */
-    @media (max-width: 600px) {
-        .container {
-            width: 90%;
-            padding: 20px;
-        }
-    }
-    </style>
     <script>document.getElementById('add-score').addEventListener('click', function() {
         // Get values from input fields
         const neighbourhoodName = document.getElementById('neighbourhood-name').value;
