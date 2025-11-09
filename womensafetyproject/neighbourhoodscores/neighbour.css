@@ -1,0 +1,179 @@
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Quicksand:wght@500;700&display=swap');
+
+/* Reset and base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #222;
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background-size: 200% 200%;
+  animation: moveGradient 8s ease-in-out infinite alternate;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header with gradient and glow */
+header {
+  width: 100%;
+  background: linear-gradient(90deg, #000428, #004e92);
+  color: #fff;
+  padding: 20px 30px;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+  animation: headerGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes headerGlow {
+  0% { text-shadow: 0 0 8px #00f0ff, 0 0 15px #0077ff; }
+  100% { text-shadow: 0 0 16px #00fff2, 0 0 25px #1e90ff; }
+}
+
+/* Main layout */
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 60px 40px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* Floating card form */
+.container {
+  flex: 1;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+  transform: translateY(0);
+}
+
+.container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #151515;
+  font-family: "Quicksand", sans-serif;
+}
+
+.container h2 {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #222;
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+}
+
+/* Inputs */
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(131, 56, 236, 0.4);
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(135deg, #4776e6, #8e54e9);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(142, 84, 233, 0.4);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(142, 84, 233, 0.6);
+}
+
+/* GIF side centered */
+.gif-side {
+  flex: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.gif-side img,
+.gif-side video {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* Floating animation for image */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .main-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .gif-side img,
+  .gif-side video {
+    max-width: 340px;
+  }
+
+  header {
+    font-size: 1.6rem;
+  }
+}
